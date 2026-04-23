@@ -6,6 +6,12 @@ const app = express();
 
 // Middlewares
 app.use(cors());
+app.use(
+  cors({
+    origin: "https://intermediatemodulew-5-frontend.vercel.app",
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 // Test route
