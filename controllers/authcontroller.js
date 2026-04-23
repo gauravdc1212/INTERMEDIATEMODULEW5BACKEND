@@ -10,9 +10,10 @@ export const register = async (req, res) => {
       ...data,
     });
   } catch (error) {
-    res.status(400).json({
-      message: error.message,
-    });
+    if (axios.isAxiosError(error)) {
+      console.log(error.response?.data); //add this
+      toast.error(error.response?.data?.message || "Something went wrong");
+    }
   }
 };
 
